@@ -72,3 +72,30 @@ Lembrando que o command line é KeySensitive (Importa se é minúsculo ou maíus
   Neste cenário, ao colocar login e senha, um arquivo de texto chamado de "data.txt" é encontrado, lotado de senhas possíveis, porém, a senha correta é a única que aparece somente uma única vez no arquivo todo. Para solucionar isso, devemos usar o comando "uniq -u", o "uniq" vai juntar todas as palavras iguais, porém elas ainda vão aparecer, com o "-u" ele vai mostrar somente a que nõa juntou com ninguém, ou seja, a que não repete nenhuma vez. Porém, este comando não pode ser usado sozinho, por isso, o comando "sort" que é requerido para o comando "uniq" funcionar, deve ser colocado junto, então a resposta aparece após digitar: "sort data.txt | uniq -u", o "|" é para o "uniq -u" ser feito juntamente com o resultado do "sort data.txt", filtrando a palavra diferente.
 
   (4CKMh1JI91bUIZZPXDqGanal4xvAg0JM)
+
+### level 9 --> 10 
+#### (bandit9)
+
+  Neste nível um arquivo data.txt é possível de abrir, ao abrir ele mostra diversos caracteres, incluindo caracteres que o leitor não reconhece, então ficam símbolos. A senha, de acordo com o nível, está ao lado de diversos símbolos de igual "==", pode ser entre 3 e mais. Para filtrar e mostrar somente os digitos que o computador consegue mostrar, podemos usar o comando "strings", ele filtrará por linhas o que tem nelas. Neste momento já é possível achar a senha, porém, para ser mais específico, podemos filtrar para mostrar somente as linhas que possuem iguais "==". Usando o comando "strings data.txt | grep ===" ele mostrará somente os caracteres legíveis do documento, e após isso vai filtra e mostrar somente os que possuem símbolo de igual.
+
+  (FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey)
+
+  
+### level 10 --> 11 
+#### (bandit10)
+
+  Entrando no arquivo "data.txt" é possível identificar a senah criptografada em base64, isso é possível de notar por conta de ela acabar em 2 iguais: "VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==". Para decodificá-la, eu usei um site chamado "cryptii" que é bem útil e mostra diversas criptografias, e quando descriptografei me mostrou :"The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr"
+
+  (dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr)
+
+  
+  
+### level 11 --> 12 
+#### (bandit11)
+
+  Entrando no arquivo, é possível ler "Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4", ou seja, está criptografado, mas como ainda existem espaços e parece que as letras foram trocadas de lugar, é um caso da cifra de césar, ao colocar em 13 caracteres após, aparece: "The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4".
+
+  (7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4)
+  
+### level 12 --> 13 
+#### (bandit12)
