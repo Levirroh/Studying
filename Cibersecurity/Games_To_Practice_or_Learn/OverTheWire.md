@@ -40,10 +40,10 @@ Lembrando que o command line é KeySensitive (Importa se é minúsculo ou maíus
 
   Como existe dezenas de arquivos, é necessário identificar uma abordagem, no desafio a descrição menciona que o arquivo possui 1033 bytes em tamanho e que não é executável, ou seja é um arquivo de texto ou semelhante, não é uma pasta, não é possível interagir.
 
-    Com isso, é possível fazer o comando "du -a -b", o comando "du" exibe o tanto de espaço que os repositórios estão usando, com o adicional de "-a e -b" é possível: "-a" ver todos os arquivos e diretórios e, com o "-b" é possível listar a quantidade de bytes em um arquivo. 
+  Com isso, é possível fazer o comando "du -a -b", o comando "du" exibe o tanto de espaço que os repositórios estão usando, com o adicional de "-a e -b" é possível: "-a" ver todos os arquivos e diretórios e, com o "-b" é possível listar a quantidade de bytes em um arquivo. 
     Além disso, para facilitar e não necessário procurar em uma enorme lista algum arquivo com a quantidade de bytes: 1033, é possível digitar no total: "du -a -b | grep 1033". O "|" significa que com o resultado da primeira parte do comando, que seria o "du -a -b" ele vai fazer o que vem depois, o "grep 1033" vai mostrar somente os arquivos que possuem este elemento (1033) na texto de entrada, ou seja, na saída do "du -a -b", então ele vai mostrar quem tem 1033 bytes, já que o comando "-b" mostra a quantidade de bytes no texto de entrada. 
 
-      Com isso ele mostra o único arquivo com 1033 bytes dos repositórios, que é o "./maybehere07/.file2", no .file2, que é acessado digitando "cat ./.file2" mostra a senha.
+  Com isso ele mostra o único arquivo com 1033 bytes dos repositórios, que é o "./maybehere07/.file2", no .file2, que é acessado digitando "cat ./.file2" mostra a senha.
 
   (HWasnPhtq9AVKe0dmk45nxy20cvUa6EG)
  
@@ -53,9 +53,9 @@ Lembrando que o command line é KeySensitive (Importa se é minúsculo ou maíus
   A dica da vez é que a senha está em quanlquer lugar do server, ou seja, entrando e colocando a senha é necessário voltara os repositórios até o início do server. De lá, as dicas mencionam: que o usuário "bandit7" é o dono, que o grupo a qual o arquivo pertence é "bandit7" e o tamanho do arquivo é 33 bytes, com isso já é possível identificar o arquivo diretamente. 
     Usando o comando "file", é possível fazer uma combinaçaõ para filtrar todos os arquivos pelo nome do dono, grupo e tamanho. Para se filtrar por dono se usa "-user bandit7", o "-user" filtrará por dono, "-group" filtrará por grupo, então até agora: "file / -user bandit7 -group bandit6", para filtrar tamanho se coloca "-size 33c" o sufixo "c" significa "bytes" no comando "file". Esta resposta fica: "file / -user bandit7 -group bandit6 -size 33c"
 
-    Com todos esses comandos a resposta já aparece no terminal, porém, diversos outros arquivos com o mesmo tamanho, dono e grupo aparecem, porém, como estamos em um desafio e este desafio nos dá permissões para cada usuário e nível que entramos, todos os outros arquivos sem ser o nosso alvo está com permissão negada, para tirar as mensagens de erro, no final do comando pode ser colocado 2>/dev/null, para  tirar todos os resultados que mostram "Permissão negada.". Isso acontece por conta de todos os resultados com valor 2 será redirecionado para o diretório dev/null, que é basicamente uma lixeira.
+  Com todos esses comandos a resposta já aparece no terminal, porém, diversos outros arquivos com o mesmo tamanho, dono e grupo aparecem, porém, como estamos em um desafio e este desafio nos dá permissões para cada usuário e nível que entramos, todos os outros arquivos sem ser o nosso alvo está com permissão negada, para tirar as mensagens de erro, no final do comando pode ser colocado 2>/dev/null, para  tirar todos os resultados que mostram "Permissão negada.". Isso acontece por conta de todos os resultados com valor 2 será redirecionado para o diretório dev/null, que é basicamente uma lixeira.
 
-    No arquivo encontrado após o comando "file / -user bandit7 -group6 -size 33c 2>/dev/null" é encontrado um arquivo dentro de um diretório que, ao usar o comando "cat" para mostrar o que tem dentro, mostra a senha.
+  No arquivo encontrado após o comando "file / -user bandit7 -group6 -size 33c 2>/dev/null" é encontrado um arquivo dentro de um diretório que, ao usar o comando "cat" para mostrar o que tem dentro, mostra a senha.
 
   (morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj)
 
