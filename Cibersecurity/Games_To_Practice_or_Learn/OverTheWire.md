@@ -99,3 +99,7 @@ Lembrando que o command line é KeySensitive (Importa se é minúsculo ou maíus
   
 ### level 12 --> 13 
 #### (bandit12)
+
+  Neste desafio o arquivo data.txt está comprimido de diversas formas diferentes, usando o comando "file data.txt" é possível identificar em qual compressão ele se encontra no momento, descomprimindo aproximadamente 8 vezes entre 3 compressões diferentes (tar, bzip, gzip) é possível ler: "The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn". O arquivo original também estava em um hexdump, para reitrá-lo deste formato é necessário usar "xxd -r data.txt".
+
+  (FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn)
