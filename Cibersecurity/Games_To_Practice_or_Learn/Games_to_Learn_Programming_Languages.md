@@ -9,17 +9,6 @@
 
 ---
 
-## **2. CyberStart Game**
-- **Descrição:** Um jogo interativo com desafios de programação e cibersegurança, ideal para iniciantes.  
-- **Linguagens Relevantes:** Python, JavaScript, SQL.  
-- **Recursos:**  
-  - Enigmas envolvendo decodificação e automação.  
-  - Cenários baseados em segurança real.  
-- **Link:** [CyberStart Game](https://www.cyberstart.com/)  
-- **Preço:** Pago (trial gratuito disponível).  
-
----
-
 ## **3. Codewars**
 - **Descrição:** Um site com desafios de programação em várias linguagens, incluindo Python e JavaScript, com aplicação prática em cibersegurança.  
 - **Linguagens Relevantes:** Python, JavaScript, Bash, C.  
