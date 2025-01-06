@@ -103,3 +103,15 @@ Lembrando que o command line é KeySensitive (Importa se é minúsculo ou maíus
   Neste desafio o arquivo data.txt está comprimido de diversas formas diferentes, usando o comando "file data.txt" é possível identificar em qual compressão ele se encontra no momento, descomprimindo aproximadamente 8 vezes entre 3 compressões diferentes (tar, bzip, gzip) é possível ler: "The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn". O arquivo original também estava em um hexdump, para reitrá-lo deste formato é necessário usar "xxd -r data.txt".
 
   (FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn)
+
+### level 13 --> 14 
+#### (bandit13)
+
+  Neste desafio, é necesário baixar um dos arquivos presentes, o "sshkey.private" usando "scp -P 2220 bandit13@bandit.labs.overthewire.org:sshkey.private .", após baixar o arquivo é possível usá-lo como um identificador para um login usando o "bandit14", usando a identificação "ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220" para logar como "bandit14", é possível acessar o server como ele, entrando no arquivo mencionado no desafio, é encontrado a para a próxima fase.
+
+  (MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS)
+
+### level 14 --> 15 
+#### (bandit14)
+
+  
