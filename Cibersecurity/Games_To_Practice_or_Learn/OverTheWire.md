@@ -113,5 +113,14 @@ Lembrando que o command line é KeySensitive (Importa se é minúsculo ou maíus
 
 ### level 14 --> 15 
 #### (bandit14)
-
   
+  Neste desafio é necessário continuar no bandit14, de lá, é necessário usar o "nc" (netcat), que permite escrever algo durante uma conexão de network. Colocando a senha do nível anterior após conectar na porta e endereço denominado "nc localhost 30000" o localhost pode ser substituído por 127.0.0.1 que é o mesmo endereço, colocando a senha do nível anterior, aparece "correct" e ganhamos a senha do próximo.
+
+  (8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo).
+
+### level 15 --> 16 
+#### (bandit15)
+
+
+    
+  (8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo)
