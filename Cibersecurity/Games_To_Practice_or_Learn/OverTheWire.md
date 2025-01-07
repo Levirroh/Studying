@@ -181,3 +181,14 @@ Aparece "Correct!" e a nova chave aparece:
   "diff passwords.new passwords.old" resulta em duas senhas. Porém a senha correta é do documento passwords.new, ou seja, é a primeira a aparecer por conta de termos digitado ela primeiro no comando. É assim que um computador funciona.
 
   (x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO)
+
+### level 18 --> 19 
+#### (bandit18)
+
+  Neste nível, sempre que logamos usando o login e senha do bandit18, somos expulsos da sessão imediatamente. Porém, antes de ser expulso, usando o ssh, ainda é possível usar um comando durante a conexão, que, dependendo da senha ser correta ou não, rodará ou não.
+
+  Dessa forma, o comando "ssh bandit18@bandit.labs.overthewire.org -p 2220 ls", inserindo a senha adquirida do nível anterior, retorna "readme", mostrando que no diretório que entramos existe o arquivo readme. Após isso somos expulsos da sessão, mas como sabemos que o arquivo existe e que está no mesmo repositório, podemos usar "cat readme"
+
+  "ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme", que, ao inserir a senha, retorna a senha para o próximo nível.
+
+  (cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8)
