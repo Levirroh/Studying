@@ -121,6 +121,263 @@ Lembrando que o command line é KeySensitive (Importa se é minúsculo ou maíus
 ### level 15 --> 16 
 #### (bandit15)
 
+  Neste desafio era necessário entrar no server como qualquer um dos logins, e fazer uma conecçaõ usando TLS/SSL encrytion, que é atingida usando o comando "openssl s_client" e para saber o endereço e a porta o desafio mencionava, então colocando os dois "openssl s_client localhost:30001" o server fazia um reconhecimento e era possível digitar algo, colocando a senha do nível "8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo", uma nova senha aparecia após o server nos enviar a mensagem "Correct!".
 
-    
-  (8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo)
+  (kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx)
+
+### level 16 --> 17 
+#### (bandit16)
+
+  Neste desafio é necessário escanear entre as portas 31000 e 32000 para saber quais possuem um server conectado à elas. Resultando em:
+  
+    "bandit14@bandit:~$ nmap -p 31000-32000 localhost
+      31046/tcp open  unknown 
+      31518/tcp open  unknown 
+      31691/tcp open  unknown 
+      31790/tcp open  unknown
+      31960/tcp open  unknown 
+    "
+  usando o comando "nmap -sV -p 31000-32000 localhost", mostra que a porta 31518 e 31790 usam TLS/SSL.
+
+  Com isso é necessário conectar a elas usando a chave do nível, fazendo isso nas portas que aceitam SSL/TLS, "openssl s_client -quiet localhost:31790" na porta do código funciona, foi necessário usar o "-quiet" por conta de o server responder, interrompendo o retorno da chave para o próximo nível, então o comando foi colocado para que ele não responda.
+
+Aparece "Correct!" e a nova chave aparece:
+
+  -----BEGIN RSA PRIVATE KEY-----
+  MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+  imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+  Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+  DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+  JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+  x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+  KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+  J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+  d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+  YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+  vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
+  +TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+  8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+  SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+  HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+  SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+  R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+  Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+  R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+  L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+  blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+  YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+  77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+  dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+  vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+  -----END RSA PRIVATE KEY-----
+
+### level 17 --> 18 
+#### (bandit17)
+
+  Salvando a chave em um arquivo .private, é possível utilizar para entrar como bandit17 usando "ssh -i sshkey17.private bandit17@bandit.labs.overthewire.org -p 2220", o desafio menciona dois arquivos "passwords.new" e "passwords.old", a senha está no "passwords.new" e é a única string que nao repete em nenhum dos dois arquivos.
+
+  Estes são os arquivos:
+
+| Passwords.new  | Passwords.old |
+| ------------- | ------------- |
+| BTrrmkKVXra01wWzxqzFmAMY9CbPXRlc
+zxYJ8Detw68SBZluYcJzAkEwrwPB1uCh
+J1mJLnxroUUJC5YEtfHVPq6LXxkWTbsF
+oSRyw7ANImF3fjwvjAnKqcJgL37Eltmf
+efslUmsn2iMnYngpaChSBe7JGgrdl1SJ
+cWqaMSNyS06Ls5p5FL6xWBiafm1WR4js
+jtFnBY4XzzHQVjT4NYwBZka2fRuNB40z
+wyuE9cNn7ruxWvJx39lzJsiakMVoiaAL
+viWro0rDldjuIhMbtuYqwpuEq11KQ1Dk
+GSJ2XOnI3OW6Kz3Bcu8jEWPldxxZYtwV
+Y9L7A4xLtKse8Qsv4cVOnkuxcJlTMnwx
+QsXRjG6uAMGD4UaxOX9dNjW9ZBIARt0b
+8z2wzuSn0FSW3Kd43n0rX574g8aIhpeP
+bIsJ24EaCpslmVSk8PYRQ6I3JzE24CU2
+BL96qzomBra296hGG95IL2EJVHhtCxnR
+sBJvUThUpq58L5MfP3xBtqAg07iqxFNo
+breOHXDOaU6pSVtwtnqoDvB0eBHIzQNz
+Hyri3fE6PElDCAzxXmYjcIYPDm1GQq1N
+nPMnwp6BWPZwFMXYRIYr0sYyeoRX7OkB
+fGD6FhO55K1tlaqzivxmlv2TxKuouCQ9
+VYsYVJYhPIrMvPhR947eEyFDAUcC8qAY
+X96s0ctaz9jKBbBZXEVZjCRg71RPi30o
+Hm7YpVTbNYnax2JNH7t0wpeNtmZaur66
+JU8pvHxM7hpNA4xf9fGN8zGczvciZ4rF
+PCe8KFcLPad79DRPjh1oR3MOzOeCkWHZ
+hAsIkoS2h0kaFPOreW6va8zuGE7FfaeG
+3HkS70idKGkDaSdiZKxsEJfNwN6bB44C
+4IomZJlt4oZVdUMe3P709ibJMMGgKVVa
+o3SVmlinHtOGkYx2OUcMdWNFpcnfR9GI
+A6mgj41YOCD6Ln5duYzGskRPX7BNGdWP
+Wio8CxULxerO0mVK9XqS7CzPEqhvkVTI
+RBteFXN1lcmtjaHlf9MQBd2Tw6COnxnl
+6WFx7rBYDHS0cbtC6I3SgFC48Mus97gT
+cUCapF3fmt1xWL1KYOcE2hHcHR9acLWK
+OtnNexZjXd8SOY2c9PJonN8Kt9r1YacT
+9TuAz9N69hhOF0mJvkwZ62jwDZhSMYdX
+jHUGSWtCiBmW3EhB83uHvqSdCSPzLoSp
+NUahNZOPpVYgBeA3sxTSloUHCCNbmIcE
+Udq1Zw8oOdLjcLZSoWFb3XVsLVr2J7e7
+fwJjyJfLsqI7eA3q1pmW0WjptEJPyjVj
+9jbIrrT9OlPADZDBfF1UOoz4lhboOnsT
+x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+dX464MV2LHPWYN9RDa7AnVBqsxjl1zui
+GOTGHQIZKu2qwhUTibu5PQaMEMWvoUDR
+t7szZtdGClutCs1g4uWKN5I1oV3cnA0c
+UjvLtH0PwVCMVKin557N52aHiyl0kYq1
+nlgqcBzlhJ2VviwtRrQ5uWchvklbT4pP
+7e9nLN3c67bDY2xu3WyJHEwV7nYdvGPE
+ExgTqIHbr2ns16kLsqyajBZkjMQLTViV
+G9cfTflYTtWolu6icsXkQub5CVDZUthf
+z2EA6BCZxLAQfYjWeAEkY1KiO2govaZb
+denuyi6K0zLwrBJ7bhK6HBcEWx5Q3pZU
+DTQZOhhW6BAOv8xsl7cNJWrE3xUpyVuZ
+PzkdBqvSfbrXDccTZoOTMvPv3g62uht2
+qsCnO2xNgscH1kEPY0x9bbWW4wqhuKun
+BXeAlHizeskRwL8DBU1pkuRNf8YQs1fy
+JbjSP4bawPjhVblhIKvYsa6DSrQ0K8Pa
+mLN3ZguwRodFz1ff9212diaWRG38JmP8
+VEvQa0rdLpnWuXdBizNHDHOoNBUOji2v
+H7pLihoyQyokYMNsblaQRZDSbJOeUN1M
+zSLn2YysyQ72CxOmuLxOjSDob3z5rfhw
+7lAgyTUFK10KM4bddgRRw56IJmTSHGkJ
+kWLg9LHTHWvwyHVchjfjvsl56NKyL6lj
+GFHzOC2d1AFDbuX4CN1ENUOtIgyDIKJt
+1Gx2ud8nXUZOTv7xmJUeRj13y4rLyya6
+B6SjgQEqvhiocLV1yvM0pjX7IdlsiCH5
+3P7gn1Bc6XZUK6ztLfnGWcbeG7YHiHiI
+nFec0Ku80ZdvtGCxoPB5cttTESXpKQnQ
+1jhfUAWYdazPlD4SP5YVWKeiw0wOq5Ri
+WNfLXhuLdvvSr7ZLevsEr4cO3NvPG490
+BJFMpf1KbAs8EyqOkarPvKemHRV8tZEh
+c0ym4wfyWFBJDpf5GijAdD9ztGOxNlhV
+Ch6fjISjwwgUp1TbZTYuXGNTA8FLdYrv
+KUMiMhP2oU7vgY9TX4YEne7rbX8yFUZn
+tI64dQ5Tk7UNjE2D6nG9BplQFogtmCGO
+WfPpHSJPVR0bbanzbX1CnjuIex4K10D6
+JINaeqrYEhqrzxMCvGbmofyb36GNfFiC
+4tgIAcfwRpPJSlaOWU3rDPn8yMG077hI
+1nRRyyOmXFR6ArHTKwuoQ92qoSc4VdQT
+Rl0ov5T2JPrTTgk56ogS1GTMwQ0vmoiE
+94X0gWlDT3wuXeB6v86U7kiHWOsVtiQt
+fRj0kPfYCkK8qEkpQp7aChL3BbyikcuF
+rudgpHLFpYtWFHhFjmtNtUZLT9F1tGqn
+osVZo4VuRGRZ94Op1IpcLub1ljo5Scig
+pX8Knc9zUufKCuAWt0xrQ0lBXccURT9y
+SszksMS8Rgtsn0bwFmuEeIQVBQakwmdB
+BXwQooIJThMQlgLCcvI1MVRXeqogZvbT
+eJyAXFSdnbnPlhCAPmNFQkiZ0KCxetCz
+HWYjo80dF1HCZlVm8KSfyIjjhWxkPGBl
+GBO5mHleMNnEUxbxEMyt9exwDUbPbOH4
+YqjE5WimoXL4xfXCZfSdwUS3u5azCZ3s
+751nXWjzPrlYjehtBSRAxQQ72QUM3XLF
+MgrEjWdEmIzbjOsWrr5CPzGUCkEDzozZ
+of7XKBKAukCSlCkTaGSXmaRipODqq5Dm
+ybshx1FNxqzADl7bpkm5gttCFtUy1zJX
+MWUhEo0IaOxdHaHdwHlAA9Uc5XnCnitH
+REUKNmW9j1fmX8hhoq3UmGwOX0uazs0L
+IL4T25H4ZPoByaPzGTofsozMg03BvjI4
+MSmRC2afxQDbU8F3eJuSQiXfxJRMN3oH
+Q7k1gkA8CAmEqwMOMWtzAXxXTSjK1omj  | BTrrmkKVXra01wWzxqzFmAMY9CbPXRlc
+zxYJ8Detw68SBZluYcJzAkEwrwPB1uCh
+J1mJLnxroUUJC5YEtfHVPq6LXxkWTbsF
+oSRyw7ANImF3fjwvjAnKqcJgL37Eltmf
+efslUmsn2iMnYngpaChSBe7JGgrdl1SJ
+cWqaMSNyS06Ls5p5FL6xWBiafm1WR4js
+jtFnBY4XzzHQVjT4NYwBZka2fRuNB40z
+wyuE9cNn7ruxWvJx39lzJsiakMVoiaAL
+viWro0rDldjuIhMbtuYqwpuEq11KQ1Dk
+GSJ2XOnI3OW6Kz3Bcu8jEWPldxxZYtwV
+Y9L7A4xLtKse8Qsv4cVOnkuxcJlTMnwx
+QsXRjG6uAMGD4UaxOX9dNjW9ZBIARt0b
+8z2wzuSn0FSW3Kd43n0rX574g8aIhpeP
+bIsJ24EaCpslmVSk8PYRQ6I3JzE24CU2
+BL96qzomBra296hGG95IL2EJVHhtCxnR
+sBJvUThUpq58L5MfP3xBtqAg07iqxFNo
+breOHXDOaU6pSVtwtnqoDvB0eBHIzQNz
+Hyri3fE6PElDCAzxXmYjcIYPDm1GQq1N
+nPMnwp6BWPZwFMXYRIYr0sYyeoRX7OkB
+fGD6FhO55K1tlaqzivxmlv2TxKuouCQ9
+VYsYVJYhPIrMvPhR947eEyFDAUcC8qAY
+X96s0ctaz9jKBbBZXEVZjCRg71RPi30o
+Hm7YpVTbNYnax2JNH7t0wpeNtmZaur66
+JU8pvHxM7hpNA4xf9fGN8zGczvciZ4rF
+PCe8KFcLPad79DRPjh1oR3MOzOeCkWHZ
+hAsIkoS2h0kaFPOreW6va8zuGE7FfaeG
+3HkS70idKGkDaSdiZKxsEJfNwN6bB44C
+4IomZJlt4oZVdUMe3P709ibJMMGgKVVa
+o3SVmlinHtOGkYx2OUcMdWNFpcnfR9GI
+A6mgj41YOCD6Ln5duYzGskRPX7BNGdWP
+Wio8CxULxerO0mVK9XqS7CzPEqhvkVTI
+RBteFXN1lcmtjaHlf9MQBd2Tw6COnxnl
+6WFx7rBYDHS0cbtC6I3SgFC48Mus97gT
+cUCapF3fmt1xWL1KYOcE2hHcHR9acLWK
+OtnNexZjXd8SOY2c9PJonN8Kt9r1YacT
+9TuAz9N69hhOF0mJvkwZ62jwDZhSMYdX
+jHUGSWtCiBmW3EhB83uHvqSdCSPzLoSp
+NUahNZOPpVYgBeA3sxTSloUHCCNbmIcE
+Udq1Zw8oOdLjcLZSoWFb3XVsLVr2J7e7
+fwJjyJfLsqI7eA3q1pmW0WjptEJPyjVj
+9jbIrrT9OlPADZDBfF1UOoz4lhboOnsT
+ktfgBvpMzWKR5ENj26IbLGSblgUG9CzB
+dX464MV2LHPWYN9RDa7AnVBqsxjl1zui
+GOTGHQIZKu2qwhUTibu5PQaMEMWvoUDR
+t7szZtdGClutCs1g4uWKN5I1oV3cnA0c
+UjvLtH0PwVCMVKin557N52aHiyl0kYq1
+nlgqcBzlhJ2VviwtRrQ5uWchvklbT4pP
+7e9nLN3c67bDY2xu3WyJHEwV7nYdvGPE
+ExgTqIHbr2ns16kLsqyajBZkjMQLTViV
+G9cfTflYTtWolu6icsXkQub5CVDZUthf
+z2EA6BCZxLAQfYjWeAEkY1KiO2govaZb
+denuyi6K0zLwrBJ7bhK6HBcEWx5Q3pZU
+DTQZOhhW6BAOv8xsl7cNJWrE3xUpyVuZ
+PzkdBqvSfbrXDccTZoOTMvPv3g62uht2
+qsCnO2xNgscH1kEPY0x9bbWW4wqhuKun
+BXeAlHizeskRwL8DBU1pkuRNf8YQs1fy
+JbjSP4bawPjhVblhIKvYsa6DSrQ0K8Pa
+mLN3ZguwRodFz1ff9212diaWRG38JmP8
+VEvQa0rdLpnWuXdBizNHDHOoNBUOji2v
+H7pLihoyQyokYMNsblaQRZDSbJOeUN1M
+zSLn2YysyQ72CxOmuLxOjSDob3z5rfhw
+7lAgyTUFK10KM4bddgRRw56IJmTSHGkJ
+kWLg9LHTHWvwyHVchjfjvsl56NKyL6lj
+GFHzOC2d1AFDbuX4CN1ENUOtIgyDIKJt
+1Gx2ud8nXUZOTv7xmJUeRj13y4rLyya6
+B6SjgQEqvhiocLV1yvM0pjX7IdlsiCH5
+3P7gn1Bc6XZUK6ztLfnGWcbeG7YHiHiI
+nFec0Ku80ZdvtGCxoPB5cttTESXpKQnQ
+1jhfUAWYdazPlD4SP5YVWKeiw0wOq5Ri
+WNfLXhuLdvvSr7ZLevsEr4cO3NvPG490
+BJFMpf1KbAs8EyqOkarPvKemHRV8tZEh
+c0ym4wfyWFBJDpf5GijAdD9ztGOxNlhV
+Ch6fjISjwwgUp1TbZTYuXGNTA8FLdYrv
+KUMiMhP2oU7vgY9TX4YEne7rbX8yFUZn
+tI64dQ5Tk7UNjE2D6nG9BplQFogtmCGO
+WfPpHSJPVR0bbanzbX1CnjuIex4K10D6
+JINaeqrYEhqrzxMCvGbmofyb36GNfFiC
+4tgIAcfwRpPJSlaOWU3rDPn8yMG077hI
+1nRRyyOmXFR6ArHTKwuoQ92qoSc4VdQT
+Rl0ov5T2JPrTTgk56ogS1GTMwQ0vmoiE
+94X0gWlDT3wuXeB6v86U7kiHWOsVtiQt
+fRj0kPfYCkK8qEkpQp7aChL3BbyikcuF
+rudgpHLFpYtWFHhFjmtNtUZLT9F1tGqn
+osVZo4VuRGRZ94Op1IpcLub1ljo5Scig
+pX8Knc9zUufKCuAWt0xrQ0lBXccURT9y
+SszksMS8Rgtsn0bwFmuEeIQVBQakwmdB
+BXwQooIJThMQlgLCcvI1MVRXeqogZvbT
+eJyAXFSdnbnPlhCAPmNFQkiZ0KCxetCz
+HWYjo80dF1HCZlVm8KSfyIjjhWxkPGBl
+GBO5mHleMNnEUxbxEMyt9exwDUbPbOH4
+YqjE5WimoXL4xfXCZfSdwUS3u5azCZ3s
+751nXWjzPrlYjehtBSRAxQQ72QUM3XLF
+MgrEjWdEmIzbjOsWrr5CPzGUCkEDzozZ
+of7XKBKAukCSlCkTaGSXmaRipODqq5Dm
+ybshx1FNxqzADl7bpkm5gttCFtUy1zJX
+MWUhEo0IaOxdHaHdwHlAA9Uc5XnCnitH
+REUKNmW9j1fmX8hhoq3UmGwOX0uazs0L
+IL4T25H4ZPoByaPzGTofsozMg03BvjI4
+MSmRC2afxQDbU8F3eJuSQiXfxJRMN3oH
+Q7k1gkA8CAmEqwMOMWtzAXxXTSjK1omj  |
+
+x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
