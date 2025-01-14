@@ -196,3 +196,10 @@ Aparece "Correct!" e a nova chave aparece:
 
 ### level 19 --> 20 
 #### (bandit19)
+
+  Neste nível para ver a senha do bandit20, que está localizado no "/etc/bandit_pass/bandit20" é necesário ser o bandit20 para ver. No nível e diretório que iniciamos, existe um arquivo binário chamado "bandit20-do" que ele pode ser executado somente pelo bandit19 e, quando for executado, é executado pelo bandit20, ou seja, para rodar o arquivo é necessário ser o bandit19 e quando o arquivo ser rodado, quem fará ele funcionar é o bandit20 automaticamente. Dessa forma, usando o arquivo e usando ele para ver a senha do bandit20 "./bandit20-do cat /etc/bandit_pass/bandit20" ele nos mostra a senha do bandit20 já que ele foi rodado pelo bandit20 mesmo sendo somente utilizado por nós, bandit19.
+
+  (0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO)
+
+### level 19 --> 20 
+#### (bandit19)
