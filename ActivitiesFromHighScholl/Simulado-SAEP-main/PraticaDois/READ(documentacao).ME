@@ -1,0 +1,30 @@
+Uma empresa de serviços financeiros está enfrentando dificuldades para gerenciar as solicitações de seus clientes sobre mudanças em contas e produtos, como ajustes de limites de crédito, atualização de dados cadastrais e solicitações de serviços adicionais. Atualmente, o processo é feito por e-mail e planilhas compartilhadas, o que gera atrasos e falta de controle sobre os prazos e as responsabilidades. Para melhorar a organização e a eficiência, a empresa decidiu adotar um sistema digital de gerenciamento de solicitações, de forma a centralizar todas as interações e garantir que as demandas sejam atendidas de maneira rápida e eficiente.
+
+As solicitações serão classificadas com base em sua urgência (baixa, média ou alta) e o seu status (pendente, em andamento ou finalizada). Cada solicitação deve estar associada a um cliente e a um funcionário responsável. A empresa deseja que o sistema permita gerenciar as solicitações de maneira ágil, facilitando a comunicação interna e garantindo maior transparência para os clientes.
+
+Com base nesse cenário, desenvolva uma aplicação para gerenciar as solicitações dos clientes. A aplicação deve atender aos seguintes requisitos:
+
+Deve armazenar as informações do cliente: ID, nome completo, CPF, e-mail e telefone.
+
+Deve permitir o registro das seguintes informações para cada solicitação:
+
+• ID da solicitação.
+• ID do cliente.
+• Descrição do serviço ou alteração solicitada.
+• Urgência (baixa, média, alta).
+• Status (pendente, em andamento, finalizada) com valor padrão "pendente".
+• Data de abertura.
+• ID do funcionário responsável (opcional no cadastro inicial).
+
+
+Permitir a atualização do status e a atribuição ou troca do funcionário responsável por cada solicitação.
+
+
+
+• Exibir as solicitações em uma interface com filtros por status, urgência e funcionário responsável.
+• Entregar a aplicação no GitHub com o código-fonte e a documentação.
+• Criar um DER com as tabelas de clientes, funcionários e solicitações, detalhando os relacionamentos e as chaves necessárias.
+• Desenvolver a estrutura do banco de dados com tabelas, relacionamentos e as consultas necessárias. 
+• A estrutura deve ser exportada em formato SQL.Desenvolver um caso de uso que ilustre os atores (cliente, funcionário) e as ações relacionadas ao fluxo de gerenciamento das solicitações.
+• Interface para cadastrar clientes com validação de campos obrigatórios e CPF válido. Exibir uma mensagem de sucesso após o cadastro. Garantir que os dados sejam inseridos corretamente no banco de dados.
+• Interface para listar as solicitações organizadas por status e urgência. Deve permitir editar o status da solicitação e a designação do funcionário responsável. Incluir filtros para facilitar a visualização das solicitações.
