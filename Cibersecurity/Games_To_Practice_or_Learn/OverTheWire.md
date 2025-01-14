@@ -192,3 +192,7 @@ Aparece "Correct!" e a nova chave aparece:
   "ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme", que, ao inserir a senha, retorna a senha para o próximo nível.
 
   (cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8)
+
+
+### level 19 --> 20 
+#### (bandit19)
