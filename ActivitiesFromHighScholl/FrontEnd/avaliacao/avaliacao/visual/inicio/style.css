@@ -1,0 +1,54 @@
+*{
+    color: white;
+    padding: 0%;
+    cursor: url(../imagens/geral/bright-star.svg), auto;
+
+}
+
+body{
+    background-color: black;
+}
+
+img{
+    height: 200px;
+    width: auto;
+    margin-top: 50px;
+}
+
+a{
+    color:rgb(25, 218, 160);
+    margin-top: 50px;
+}
+
+.inicio{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+button{
+    color: black;
+    height: 50px;
+    width: 150px;
+    border-radius: 30px;
+    border-style: none;
+}
+
+.paginas{
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+    border-width: 5px;
+    border-style: dotted;
+    border-color: white;
+    width: 170px;
+    height: 70px;
+    transition-duration: 1s;
+}
