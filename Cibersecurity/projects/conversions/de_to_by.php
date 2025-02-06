@@ -7,7 +7,7 @@
 <body>
     <h1>Conversor de Decimal em Binário.</h1>
     <form method="POST">
-        <label for="decimal">Digite o número binário</label>
+        <label for="decimal">Digite o número decimal</label>
         <input type="number" name="decimal">
         <input type="submit" value="calcular" name="calcular">
     </form>
